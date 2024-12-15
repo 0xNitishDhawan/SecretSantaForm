@@ -37,8 +37,6 @@ function Form() {
             gift2: '',
             gift3: '',
           })
-      console.log("Clicked")
-      // console.log(formData)
       const response = await fetch('http://localhost:5000/', {
         method: 'POST',
         headers: {
@@ -47,13 +45,12 @@ function Form() {
         body: JSON.stringify(formData),
       });
       const result = await response;
-      if(response.status === 201){
+      if(result.status === 201){
         setStatusMessage('Form submitted successfully!');
       }
       else{
         setStatusMessage('Something Went Wrong! Fill all fields correctly')
       }
-      console.log(result)
       window.location.reload()
     } catch (error) {
       console.error('Error:', error);

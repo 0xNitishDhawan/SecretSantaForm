@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 
 app.post('/',async(req, res)=>{
   try {
-    // console.log("Incomeing Index:",req.body)
+
     const {name, secretName, phone, email, hobbies, gift1, gift2, gift3}=req.body
     user= await User.create({name:name, email: email, secretName: secretName, phone:phone, hobbies:hobbies, gift1: gift1, gift2: gift2, gift3: gift3})
     res.status(201).json(user)
@@ -28,7 +28,6 @@ app.post('/',async(req, res)=>{
 app.get('/users', async (req, res) => {
   try {
     const users = await User.find(); // Fetch all users from the database
-    console.log(users)
     res.status(200).json(users);
   } catch (error) {
     console.error(error);

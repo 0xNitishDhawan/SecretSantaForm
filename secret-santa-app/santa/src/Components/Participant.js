@@ -8,22 +8,9 @@ function Participants() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // fetch('http://localhost:5000/users' ,{
-    //   method: 'GET',
-    // })
-    //   .then((response) => {
-    //     console.log(response)
-    //     setParticipants(response);
-    //     setLoading(false);
-    //   })
-    //   .catch((err) => {
-    //     setError(err.message);
-    //     setLoading(false);
-    //   });
     axios
     .get('http://localhost:5000/users')
     .then((response)=>{
-      console.log(response)
       setParticipants(response.data);
       setLoading(false);
     })
