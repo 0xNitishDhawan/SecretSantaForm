@@ -14,6 +14,7 @@ function Form() {
   });
 
   const [statusMessage, setStatusMessage] = useState('');
+  const [isLoading, setIsLoading]= useState(false)
   const disabled = useRef(false)
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -24,6 +25,7 @@ function Form() {
   };
 
   const handleSubmit = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
     try {
         disabled.current=true
@@ -37,7 +39,7 @@ function Form() {
             gift2: '',
             gift3: '',
           })
-      const response = await fetch('http://localhost:5000/', {
+      const response = await fetch('https://secret-santa-nn49.onrender.com/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,9 +54,11 @@ function Form() {
         setStatusMessage('Something Went Wrong! Fill all fields correctly')
       }
       window.location.reload()
+      setIsLoading(false)
     } catch (error) {
       console.error('Error:', error);
       setStatusMessage('Failed to submit the form.');
+      setIsLoading(false)
     }
   };
 
@@ -134,6 +138,7 @@ function Form() {
         />
 
       <button type="submit" disabled={disabled.current} onClick={handleSubmit}>Submit</button>
+      {isLoading && <p>Do Not reload or leave until this message disappears.</p>}
       {statusMessage && <p className="success">{statusMessage}</p>}
       </>
   );
