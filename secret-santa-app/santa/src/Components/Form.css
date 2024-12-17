@@ -19,7 +19,7 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 2rem; /* Added extra padding on left and right */
   text-align: center;
 }
 
@@ -59,6 +59,7 @@ label {
   display: block;
   font-weight: bold;
   margin-top: 1.5rem;
+  margin-left: 2%;
   color: #333;
 }
 
@@ -67,7 +68,8 @@ input[type='email'],
 input[type='tel'],
 input[type='password'],
 textarea {
-  width: 100%;
+  margin: 0 2%;
+  width: 96%;
   padding: 0.8rem;
   margin-top: 0.5rem;
   border: 2px solid #d32f2f;
@@ -88,7 +90,7 @@ input:focus {
 }
 
 button {
-  width: 100%;
+  width: 96%;
   padding: 0.8rem;
   background: #d32f2f;
   color: white;
@@ -98,6 +100,8 @@ button {
   border-radius: 8px;
   cursor: pointer;
   margin-top: 2rem;
+  margin-left: 2%;
+  margin-right: 2%;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 

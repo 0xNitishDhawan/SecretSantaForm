@@ -28,7 +28,7 @@ app.post('/',async(req, res)=>{
 app.get('/users', async (req, res) => {
   try {
     const users = await User.find(); // Fetch all users from the database
-    res.status(200).json(users);
+    res.status(200).json(users.length);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");

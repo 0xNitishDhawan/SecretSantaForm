@@ -1,13 +1,17 @@
 import "./App.css";
-import Form from "./Components/Form";
-import Participants from "./Components/Participant";
+import FormPage from "./pages/formPage";
+import HomePage from "./pages/HomePage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <h2 className="">🎄 Secret Santa Registration 🎅</h2>
-      <Form />
-      <Participants/>
+      <Router>
+        <Routes>
+          <Route path="/form" element={<FormPage />} />
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </Router>
     </>
   );
 }
