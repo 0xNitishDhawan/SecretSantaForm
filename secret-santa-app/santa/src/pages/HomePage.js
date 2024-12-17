@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
 
 const HomePage = () => {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="homepage-container">
       <h1 className="title">Secret Santa Party 2024</h1>
