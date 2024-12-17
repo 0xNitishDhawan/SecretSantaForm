@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./Form.css";
 import Payment from "../Components/Payment"
+import Modal from "./Modal";
 
 function Form() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ function Form() {
 
   const [statusMessage, setStatusMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const disabled = useRef(false);
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -50,16 +52,22 @@ function Form() {
       const result = await response;
       if (result.status === 201) {
         setStatusMessage("Form submitted successfully!");
+        setIsModalOpen(true); 
       } else {
         setStatusMessage("Something Went Wrong! Fill all fields correctly");
+        setIsModalOpen(true); 
       }
-      window.location.reload();
       setIsLoading(false);
     } catch (error) {
       console.error("Error:", error);
       setStatusMessage("Failed to submit the form.");
       setIsLoading(false);
+      setIsModalOpen(true);
     }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -147,6 +155,9 @@ function Form() {
         <p>Do Not reload or leave until this message disappears.</p>
       )}
       {statusMessage && <p className="success">{statusMessage}</p>}
+      {isModalOpen && (
+        <Modal message={statusMessage} onClose={closeModal} />
+      )}
     </>
   );
 }

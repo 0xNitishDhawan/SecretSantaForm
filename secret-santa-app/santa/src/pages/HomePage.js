@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
+import "../Components/participant.css"
 
 const HomePage = () => {
   
@@ -34,6 +35,10 @@ const HomePage = () => {
         <h2>🎩 Dress Code</h2>
         <p>Please wear <strong>Red and White</strong> to match the festive spirit!</p>
       </section>
+
+      <section className="participants-section">
+      <span className='participants-header'>Max Gift Amount: ₹500</span>
+    </section>
 
       <section className="organizers">
         <h2>Organized By</h2>
