@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Form.css';
+import "./participant.css"
 
 function Participants() {
   const [participants, setParticipants] = useState("");
@@ -26,7 +26,7 @@ function Participants() {
 
   return (
     <section className="participants-section">
-      <h2>🎁 Registered Participants - {participants} 🎅</h2>
+      <span className='participants-header'>🎁 Registered Participants - {participants} 🎅</span>
     </section>
   );
 }

@@ -126,17 +126,6 @@ button:hover {
   color: #c62828;
 }
 
-/* Participants Section */
-.participants-section {
-  margin-top: 2rem;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 2rem;
-  border: 3px solid #d32f2f;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
 .participants-list {
   list-style-type: none;
   padding: 0;
