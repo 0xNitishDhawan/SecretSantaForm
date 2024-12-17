@@ -10,9 +10,11 @@ const HomePage = () => {
 
       <section className="details">
         <h2>✨ Party Details ✨</h2>
-        <p>📅 Date: 24th December 2024</p>
-        <p>⏰ Time: 10:00 PM</p>
-        <p>📍 Venue: Hamlet PG</p>
+        <ul>
+          <li>📅 <b>Date:</b> 24th December 2024</li>
+          <li>⏰ <b>Time:</b> 10:00 PM</li>
+          <li>📍 <b>Venue:</b> Hamlet PG</li>
+        </ul>
       </section>
 
       <section className="activities">
@@ -26,7 +28,7 @@ const HomePage = () => {
 
       <section className="dress-code">
         <h2>🎩 Dress Code</h2>
-        <p>Please wear Red and White to match the festive spirit!</p>
+        <p>Please wear <strong>Red and White</strong> to match the festive spirit!</p>
       </section>
 
       <section className="organizers">
@@ -35,9 +37,9 @@ const HomePage = () => {
         <ul>
           <li>Nitish Dhawan</li>
           <li>Saharh Pamacha</li>
-          <li>Vikash Bharti</li>
+          <li>Vikas Bharti</li>
         </ul>
-        <p>A big thanks to our wonderful host, <b>Sonika Bangal Wali</b>!</p>
+        <p>A big thanks to our wonderful host, <br/><b>Sonika Bangal Wali</b></p>
       </section>
 
       <section className="rsvp">
@@ -45,8 +47,8 @@ const HomePage = () => {
         <p>Please confirm your presence by filling out the form linked below.</p>
         <p>For questions, reach out to:</p>
         <ul>
-          <li>📞 Sonika: 9898989898</li>
-          <li>📞 Lekhansh: 98988808080</li>
+          <li>📞 Sonika: 7001771997</li>
+          <li>📞 Lekhansh: 8826668959</li>
         </ul>
       </section>
 
