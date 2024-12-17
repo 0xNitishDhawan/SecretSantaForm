@@ -42,7 +42,7 @@ function Form() {
       });
       const result = await response;
       if (result.status === 201) {
-        setStatusMessage("Form submitted successfully!");
+        setStatusMessage("Form submitted successfully! You will recieve a mail shortly.");
         setFormData({
           name: "",
           secretName: "",

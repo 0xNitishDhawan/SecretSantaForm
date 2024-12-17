@@ -30,7 +30,19 @@ function QrCodeComponent() {
         <br />
       </div>
 
-      <div className="qr-code-container"></div>
+      <a
+        className="Paytm"
+        href="upi://pay?pa=sonikabaluka@axl&pn=sonika%20baluka&mc=0000&mode=02&purpose=00"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Click to pay
+      </a>
+      <a
+        className="qr-code-container"
+        href="upi://pay?pa=sonikabaluka@axl&pn=sonika%20baluka&mc=0000&mode=02&purpose=00"
+        target="_blank"
+      ></a>
     </section>
   );
 }
