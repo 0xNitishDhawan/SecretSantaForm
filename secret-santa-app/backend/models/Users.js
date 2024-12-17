@@ -24,12 +24,15 @@ const UserSchema = new Schema({
     },
     gift1:{
         type:String,
+        required:true
     },
     gift2:{
         type:String,
+        required:true
     },
     gift3:{
         type:String,
+        required:true
     },  
     date:{
         type: Date,

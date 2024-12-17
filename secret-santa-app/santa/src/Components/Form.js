@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./Form.css";
-import Payment from "../Components/Payment"
+import Payment from "../Components/Payment";
 import Modal from "./Modal";
 
 function Form() {
@@ -19,6 +19,7 @@ function Form() {
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const disabled = useRef(false);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -32,16 +33,6 @@ function Form() {
     e.preventDefault();
     try {
       disabled.current = true;
-      setFormData({
-        name: "",
-        secretName: "",
-        phone: "",
-        email: "",
-        hobbies: "",
-        gift1: "",
-        gift2: "",
-        gift3: "",
-      });
       const response = await fetch("https://secret-santa-nn49.onrender.com/", {
         method: "POST",
         headers: {
@@ -52,24 +43,41 @@ function Form() {
       const result = await response;
       if (result.status === 201) {
         setStatusMessage("Form submitted successfully!");
-        setIsModalOpen(true); 
+        setFormData({
+          name: "",
+          secretName: "",
+          phone: "",
+          email: "",
+          hobbies: "",
+          gift1: "",
+          gift2: "",
+          gift3: "",
+        });
       } else {
-        setStatusMessage("Something Went Wrong! Fill all fields correctly");
-        setIsModalOpen(true); 
+        setStatusMessage("Something went wrong! Please fill all fields correctly.");
       }
+
+      // Open the modal with the message
+      setIsModalOpen(true);
+
+      // Clear form data to allow the next submission
+
+      // Reset disabled state and loading state
+      disabled.current = false;
       setIsLoading(false);
     } catch (error) {
       console.error("Error:", error);
       setStatusMessage("Failed to submit the form.");
-      setIsLoading(false);
       setIsModalOpen(true);
+      setIsLoading(false);
     }
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setStatusMessage(""); // Clear status message after closing modal
   };
-
+  
   return (
     <>
       <h2>Secret Santa Form</h2>
@@ -83,7 +91,7 @@ function Form() {
         required
       />
 
-      <label>Secret Santa Name (No one will know this, bilkul khufiya) </label>
+      <label>Secret Santa Name (No one will know this, bilkul khufiya):</label>
       <input
         type="text"
         name="secretName"
@@ -123,7 +131,7 @@ function Form() {
       <input
         type="text"
         name="gift1"
-        placeholder={`Gift 1, Gift 2, Gift 3`}
+        placeholder="Gift 1, Gift 2, Gift 3"
         value={formData.gift1}
         onChange={handleChange}
         required
@@ -146,15 +154,14 @@ function Form() {
         onChange={handleChange}
         required
       />
-      <Payment/>
+      
+      <Payment />
 
       <button type="submit" disabled={disabled.current} onClick={handleSubmit}>
         Submit
       </button>
-      {isLoading && (
-        <p>Do Not reload or leave until this message disappears.</p>
-      )}
-      {statusMessage && <p className="success">{statusMessage}</p>}
+      {isLoading && <p>Do not reload or leave until this message disappears.</p>}
+      
       {isModalOpen && (
         <Modal message={statusMessage} onClose={closeModal} />
       )}
