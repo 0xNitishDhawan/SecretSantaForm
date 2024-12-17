@@ -10,6 +10,7 @@ const formPage = () => {
       <Participants />
       <CountdownTimer targetDate={'2024-12-20T00:00:00'}/>
       <Form />
+
     </>
   );
 };
