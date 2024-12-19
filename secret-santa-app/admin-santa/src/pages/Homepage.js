@@ -9,7 +9,9 @@ const Homepage = () => {
         <Link to="/participants">
           <Card cardText={"Registered Participants"} />
         </Link>
-        <Card cardText={"Matched Data"} />
+        <Link to="/match">
+          <Card cardText={"Matched Data"} />
+        </Link>
       </div>
     </>
   );
