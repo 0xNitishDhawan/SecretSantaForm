@@ -31,17 +31,17 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.post('/',async(req, res)=>{
-  try {
+// app.post('/',async(req, res)=>{
+//   try {
 
-    const {name, secretName, phone, email, hobbies, gift1, gift2, gift3}=req.body
-    user= await User.create({name:name, email: email, secretName: secretName, phone:phone, hobbies:hobbies, gift1: gift1, gift2: gift2, gift3: gift3})
-    res.status(201).json(user)
-  } catch (error) {
-    console.error(error);
-    res.status(500).send(error);
-  }
-})
+//     const {name, secretName, phone, email, hobbies, gift1, gift2, gift3}=req.body
+//     user= await User.create({name:name, email: email, secretName: secretName, phone:phone, hobbies:hobbies, gift1: gift1, gift2: gift2, gift3: gift3})
+//     res.status(201).json(user)
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send(error);
+//   }
+// })
 
 app.get('/users', async (req, res) => {
   try {

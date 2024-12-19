@@ -1,5 +1,5 @@
 import "./App.css";
-import FormPage from "./pages/formPage";
+// import FormPage from "./pages/formPage";
 import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -8,7 +8,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/form" element={<FormPage />} />
+          {/* <Route path="/form" element={<FormPage />} /> */}
           <Route path="/" element={<HomePage />} />
         </Routes>
       </Router>
