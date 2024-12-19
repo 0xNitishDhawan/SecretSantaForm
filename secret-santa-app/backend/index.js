@@ -35,6 +35,16 @@ app.get('/users', async (req, res) => {
   }
 });
 
+app.get('/yeshu-registered-usres', async (req, res) => {
+  try {
+    const users = await User.find(); // Fetch all users from the database
+    res.status(200).json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)

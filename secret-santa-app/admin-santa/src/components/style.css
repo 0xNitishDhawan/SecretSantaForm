@@ -1,0 +1,17 @@
+.card-container{
+    width: 150px;
+    height: 100px;
+    background-color: antiquewhite;
+    margin: 2px solid black;
+    align-content: center;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration:solid;
+    color: black;
+}
+
+.Card-div{
+    margin-top: 30%;
+    justify-content:space-evenly;
+    display: flex;
+}
