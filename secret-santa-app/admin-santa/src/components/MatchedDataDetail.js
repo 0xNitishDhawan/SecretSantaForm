@@ -3,7 +3,7 @@ import React from "react";
 const participantDetail = ({ participant }) => {
   return (
     <div className="participant-card">
-      <h2>Giver Name:{participant.giverNamlle} </h2>
+      <h2>Giver Name: {participant.giverName} </h2>
       <p>
         <strong>Giver Mail:</strong> {participant.giverEmail}
       </p>
