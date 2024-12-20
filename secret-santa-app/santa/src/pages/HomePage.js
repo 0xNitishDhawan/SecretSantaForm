@@ -61,7 +61,7 @@ const HomePage = () => {
         </ul>
       </section>
 
-      <Link to="/form" className="form-button">Fill Out the Form</Link>
+      {/* <Link to="/form" className="form-button">Fill Out the Form</Link> */}
 
       <footer className="footer">See you there! 🎅 Santa and Team 🎄</footer>
     </div>

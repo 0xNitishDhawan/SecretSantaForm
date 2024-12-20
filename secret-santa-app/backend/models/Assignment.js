@@ -10,18 +10,22 @@ const assignmentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  receiverName: {
+  recieverName: {
     type: String,
     required: true,
   },
-  receiverEmail: {
+  recieverHobbies: {
     type: String,
     required: true,
   },
-  dateAssigned: {
-    type: Date,
-    default: Date.now,
+  receiverNoGift: {
+    type: String,
+    required: true,
   },
+  receiverSuperpower: {
+    type: String,
+    required: true,
+  }
 });
 
 const Assignment = mongoose.model("Assignment", assignmentSchema);

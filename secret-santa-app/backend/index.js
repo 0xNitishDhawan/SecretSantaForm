@@ -1,14 +1,14 @@
-const express = require('express')
-const connectToMongo=require('./db')
+const express = require("express");
+const connectToMongo = require("./db");
 connectToMongo();
-const app = express()
-const port = 5000
-const cors = require('cors')
-const User=require("./models/Users")
-const Assignment=require("./models/Assignment")
+const app = express();
+const port = 5000;
+const cors = require("cors");
+const User = require("./models/Users");
+const Assignment = require("./models/Assignment");
 
-app.use(cors())
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 
 const assignSecretSantas = (participants) => {
   if (participants.length < 2) {
@@ -20,16 +20,28 @@ const assignSecretSantas = (participants) => {
 
   // Assign each user the next user in the shuffled array
   const assignments = shuffled.map((user, index) => ({
-    giver: user,
+    giverName: user.name,
+    giverEmail: user.email,
     receiver: shuffled[(index + 1) % shuffled.length],
   }));
 
-  return assignments;
+  const matchedData = assignments.map(({ giverName, giverEmail, receiver }) => {
+    return {
+      giverName: giverName,
+      giverEmail: giverEmail,
+      recieverName: receiver.name,
+      recieverHobbies: receiver.hobbies,
+      receiverNoGift: receiver.gift1,
+      receiverSuperpower: receiver.gift2,
+    };
+  });
+
+  return matchedData;
 };
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 // app.post('/',async(req, res)=>{
 //   try {
@@ -43,7 +55,7 @@ app.get('/', (req, res) => {
 //   }
 // })
 
-app.get('/users', async (req, res) => {
+app.get("/users", async (req, res) => {
   try {
     const users = await User.find(); // Fetch all users from the database
     res.status(200).json(users.length);
@@ -53,7 +65,7 @@ app.get('/users', async (req, res) => {
   }
 });
 
-app.get('/yeshu-registered-usres', async (req, res) => {
+app.get("/yeshu-registered-usres", async (req, res) => {
   try {
     const users = await User.find(); // Fetch all users from the database
     res.status(200).json(users);
@@ -71,14 +83,13 @@ app.post("/assign-santas", async (req, res) => {
     }
 
     const assignments = assignSecretSantas(participants);
-    // await Assignment.create(assignments);
+    await Assignment.create(assignments);
     res.status(200).json(assignments);
   } catch (error) {
     res.status(500).json({ message: "Error assigning Secret Santas" });
   }
 });
 
-
 app.listen(port, () => {
-  console.log(`App listening on port ${port}`)
-})
+  console.log(`App listening on port ${port}`);
+});
