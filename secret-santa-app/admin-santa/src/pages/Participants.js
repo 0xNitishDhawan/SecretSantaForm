@@ -10,7 +10,7 @@ function Participants() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/yeshu-registered-usres")
+      .get("https://secret-santa-nn49.onrender.com/yeshu-registered-usres")
       .then((response) => {
         setParticipants(response.data);
         setLoading(false);

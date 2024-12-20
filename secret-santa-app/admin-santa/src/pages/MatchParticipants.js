@@ -9,7 +9,7 @@ const MatchParticipants = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/matched-data")
+      .get("https://secret-santa-nn49.onrender.com/matched-data")
       .then((response) => {
         setMatchedData(response.data);
         setLoading(false);
