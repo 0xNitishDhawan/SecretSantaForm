@@ -90,6 +90,15 @@ app.post("/assign-santas", async (req, res) => {
   }
 });
 
+app.get("/matched-data", async (req, res) => {
+  try {
+    const Assignments = await Assignment.find();
+    res.status(200).json(Assignments);
+  } catch (error) {
+    res.status(500).json({ message: "Error assigning Secret Santas" });
+  }
+});
+
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
