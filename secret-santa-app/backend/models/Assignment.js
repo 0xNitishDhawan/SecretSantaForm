@@ -6,6 +6,10 @@ const assignmentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  giverSecretName: {
+    type: String,
+    required: true,
+  },
   giverEmail: {
     type: String,
     required: true,
