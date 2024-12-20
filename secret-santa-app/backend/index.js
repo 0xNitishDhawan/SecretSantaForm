@@ -7,7 +7,8 @@ const cors = require("cors");
 const User = require("./models/Users");
 const Assignment = require("./models/Assignment");
 const nodemailer = require("nodemailer");
-const expressAsyncHandler = require("express-async-handler");
+const dotenv = require('dotenv');
+dotenv.config();
 
 app.use(cors());
 app.use(express.json());
@@ -18,42 +19,42 @@ const transporter = nodemailer.createTransport({
   secure: false,
   auth: {
     user: "anonymousperson.coder@gmail.com",
-    pass: "eehd wgai jxgb snbv",
+    pass: process.env.MongoDBPassword,
   },
 });
 
-const assignSecretSantas = (participants) => {
-  if (participants.length < 2) {
-    return { error: "Not enough participants for assignment." };
-  }
+// const assignSecretSantas = (participants) => {
+//   if (participants.length < 2) {
+//     return { error: "Not enough participants for assignment." };
+//   }
 
-  // Shuffle the array
-  const shuffled = [...participants].sort(() => Math.random() - 0.5);
+//   // Shuffle the array
+//   const shuffled = [...participants].sort(() => Math.random() - 0.5);
 
-  // Assign each user the next user in the shuffled array
-  const assignments = shuffled.map((user, index) => ({
-    giverName: user.name,
-    giverEmail: user.email,
-    giverSecretName: user.secretName,
-    receiver: shuffled[(index + 1) % shuffled.length],
-  }));
+//   // Assign each user the next user in the shuffled array
+//   const assignments = shuffled.map((user, index) => ({
+//     giverName: user.name,
+//     giverEmail: user.email,
+//     giverSecretName: user.secretName,
+//     receiver: shuffled[(index + 1) % shuffled.length],
+//   }));
 
-  const matchedData = assignments.map(
-    ({ giverName,giverEmail, giverSecretName, receiver }) => {
-      return {
-        giverName: giverName,
-        giverSecretName: giverSecretName,
-        recieverName: receiver.name,
-        giverEmail: giverEmail,
-        recieverHobbies: receiver.hobbies,
-        receiverNoGift: receiver.gift1,
-        receiverSuperpower: receiver.gift2,
-      };
-    }
-  );
+//   const matchedData = assignments.map(
+//     ({ giverName,giverEmail, giverSecretName, receiver }) => {
+//       return {
+//         giverName: giverName,
+//         giverSecretName: giverSecretName,
+//         recieverName: receiver.name,
+//         giverEmail: giverEmail,
+//         recieverHobbies: receiver.hobbies,
+//         receiverNoGift: receiver.gift1,
+//         receiverSuperpower: receiver.gift2,
+//       };
+//     }
+//   );
 
-  return matchedData;
-};
+//   return matchedData;
+// };
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
